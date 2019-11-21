@@ -1,0 +1,68 @@
+<div class="inputListContainer">
+  <!--  -->
+  <div class="inputListWraper flexBox">
+    <div class="outlineContainer">
+      <div class="first"></div>
+      <div class="middle">
+        <span>{{question.label}}</span>
+      </div>
+      <div class="end"></div>
+    </div>
+    <div class="inputList flexBox wrap">
+      <div class="inputField" *ngFor="let element of elementsList;let i = index;trackBy:trackByIdx">
+        <mat-form-field appearance="fill" class="small" *ngIf="question.controlType =='textarray'">
+          <input matInput [ngModel]="elementsList[i]" (ngModelChange)="elementChange($event,i)">
+          <button matSuffix mat-icon-button *ngIf="!question.disabled"
+            (click)="removeElement(i)" color="primary">
+            <mat-icon aria-label="Eliminar">close</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="small" *ngIf="question?.controlType =='selectarray'">
+          <mat-select [ngModel]="elementsList[i]" (ngModelChange)="elementChange($event,i)">
+            <mat-option *ngIf="elementsList[i]" [value]="elementsList[i]">{{question.getLabel(elementsList[i])}}</mat-option>
+            <mat-option *ngFor="let opt of questionOptions" [value]="opt.value">{{opt.label}}</mat-option>
+          </mat-select>
+          <button matSuffix mat-icon-button *ngIf="!question.disabled"
+            (click)="removeElement(i)" color="primary">
+            <mat-icon aria-label="Eliminar">close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="small" *ngIf="question?.controlType =='autocompletearray'">
+          <input matInput [placeholder]="question.getLabel(elementsList[i])" [ngModel]="elementsList[i]" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let opt of questionOptions" [value]="opt.value">{{opt.label}}</mat-option>
+          </mat-autocomplete>
+          <button matSuffix mat-icon-button *ngIf="!question.disabled"
+            (click)="removeElement(i)" color="primary">
+            <mat-icon aria-label="Eliminar">close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="small" *ngIf="question.controlType =='ytvideosarray'">
+          <input matInput [ngModel]="elementsList[i]" (ngModelChange)="elementChange($event,i)">
+          <div matSuffix class="flexBox centerVertical" *ngIf="!question.disabled">
+            <button  mat-icon-button lass="flexBox centerVertical"
+              (click)="removeElement(i)" color="accent">
+              <mat-icon aria-label="Eliminar">close</mat-icon>
+            </button>
+            <a mat-icon-button class="flexBox centerVertical" [disabled]="!elementsList[i]" target="_blank"
+              [href]="'https://www.youtube.com/watch?v='+elementsList[i]" color="accent">
+              <mat-icon aria-label="Ver">visibility</mat-icon>
+            </a>
+          </div>
+          <!-- <button matSuffix mat-icon-button
+            (click)="viewYouTubeVideo(i)" color="accent">
+            <mat-icon aria-label="Ver">visibility</mat-icon>
+          </button> -->
+        </mat-form-field>
+      </div>
+      <button mat-stroked-button color="primary" [disabled]="elementsList[elementsList?.length-1]==''" (click)="addNewElement()">
+        <span>Agregar +</span>
+      </button>
+    </div>
+    <div class="icon">
+      <mat-icon color="primary">edit</mat-icon>
+    </div>
+  </div>
+</div>

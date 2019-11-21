@@ -1,0 +1,41 @@
+mat-sidenav-container{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  mat-sidenav{
+    width: 160px !important;
+    .logoContainer{
+      height: 64px;
+      border-bottom: 0.5px solid gray;
+      .imageContainer{
+        height: 3em;
+      }
+    }
+    mat-nav-list{
+      a{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        border-right: 3px solid transparent;
+        &.active{
+          border-color: white;
+        }
+      }
+    }
+  }
+  mat-sidenav-content{
+    mat-toolbar{
+      width: calc(100% - 160px);
+      position: fixed;
+      z-index: 1000;
+      .buttonsContainer{
+        width: 100%;
+      }
+    }
+    .placeHolder{
+      width: 100%;
+      margin-bottom: 64px;
+    }
+  }
+}

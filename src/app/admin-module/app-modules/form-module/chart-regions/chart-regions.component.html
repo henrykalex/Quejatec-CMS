@@ -1,0 +1,20 @@
+<div class="chartRegionsContainer">
+  <div class="regionsListContainer">
+    <div class="inputsWrapper flexBox" *ngFor="let region of regionsList;let i = index">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" [ngModel]="region.name" (ngModelChange)="elementChange($event,i,'name')">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Valor</mat-label>
+        <input type="number" matInput placeholder="Valor" [ngModel]="region.value" (ngModelChange)="elementChange($event,i,'value')">
+      </mat-form-field>
+      <button mat-icon-button color="primary" (click)="deleteRegion(i)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="flexBox end">
+      <button mat-raised-button color="primary" (click)="addNewRegion($event)">AGREGAR REGIÓN</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+// @import "../../../../styles/variables";
+// @import "./node_modules/@angular/material/core/theming/_theming";
+@import '~@angular/material/theming';
+.inputListContainer{
+  margin-bottom: 1.5em;
+  position: relative;
+  h1{
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+  }
+  .inputListWraper{
+    // border: 1px solid mat-color($primary);
+    padding: 1em 0.7em;
+    margin: 1em 0;
+    .outlineContainer{
+      display: flex;
+      position: absolute;
+      top: .25em;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      color: rgba(0, 0, 0, 0.12);
+      .first,.middle,.end{
+        border: 1px solid rgba(0, 0, 0, 0.12);
+      }
+      .first{
+        width: 7px;
+        border-right-style: none;
+        border-radius: 5px 0 0 5px;
+      }
+      .middle{
+        min-width: 1em;
+        padding: 0 0.2em;
+        border-right-style: none;
+        border-left-style: none;
+        border-top-color: transparent;
+        span{
+          color: rgba(0, 0, 0, 0.6);
+          font-size: 0.7em;
+          display: block;
+          margin-top: -0.7em;
+        }
+      }
+      .end{
+        min-width: 7px;
+        border-left-style: none;
+        flex-grow: 1;
+        border-radius: 0 5px 5px 0;
+      }
+    }
+    .inputList{
+      width: 100%;
+      .inputField{
+        margin-right: 5%;
+        width: 30%;
+        mat-form-field.mat-form-field{
+          display: block;
+        }
+        &:nth-child(3n+3) {
+          margin-right: 0;
+        }
+        a[mat-icon-button]{
+          display: flex;
+        }
+      }
+      button[mat-stroked-button]{
+        height: 2.5em;
+        width: 28.5%;
+      }
+    }
+    .icon{
+      padding-left: 0.5em;
+    }
+  }
+}
+@import "./input-list-mobile.component";

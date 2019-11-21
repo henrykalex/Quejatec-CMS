@@ -1,0 +1,5 @@
+@import './form-module/text-editor/text-editor.component';
+
+@mixin deva-modules-theme($theme) {
+  @include text-editor-theme($theme);
+}

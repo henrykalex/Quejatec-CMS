@@ -1,0 +1,77 @@
+<div class="questionContainer" [formGroup]="form">
+  <div *ngIf="state =='view'">
+    <mat-form-field [ngClass]="formFieldClass" appearance="outline" color="primary">
+      <mat-label>{{question.label}}</mat-label>
+      <input matInput class="viewValue" [disabled]="true" [formControlName]="question?.key">
+    </mat-form-field>
+  </div>
+  <ng-container *ngIf="state == 'edit'">
+    <ng-container [ngSwitch]="question.controlType">
+      <ng-container *ngSwitchCase="'input'">
+        <mat-form-field [ngClass]="formFieldClass" appearance="outline" color="primary">
+          <mat-label>{{question.label}}</mat-label>
+          <app-date-time-select *ngIf="getQuestionType()=='datetime'"placeholder="FECHA Y HORA" [formControlName]="question?.key"></app-date-time-select>
+          <app-date-select *ngIf="getQuestionType()=='date'" placeholder="FECHA" [formControlName]="question?.key"></app-date-select>
+          <app-time-select *ngIf="getQuestionType()=='time'"placeholder="HORA" [formControlName]="question?.key"></app-time-select>
+          <input matInput *ngIf="getQuestionType()!='date' && getQuestionType()!='time' && getQuestionType()!='datetime'" [type]="getQuestionType()" [placeholder]="question.label" [formControlName]="question?.key">
+          <mat-icon matSuffix color="primary" *ngIf="!question.disabled">edit</mat-icon>
+        </mat-form-field>
+      </ng-container>
+      <mat-form-field [ngClass]="formFieldClass" *ngSwitchCase="'textarea'" appearance="outline" color="primary">
+        <mat-label>{{question.label}}</mat-label>
+        <textarea matInput [placeholder]="question.placeholder" [formControlName]="question?.key"></textarea>
+        <mat-icon matSuffix color="primary" *ngIf="!question.disabled">edit</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field [ngClass]="formFieldClass" *ngSwitchCase="'select'" appearance="outline" color="primary">
+        <mat-label>{{question.label}}</mat-label>
+        <mat-select [placeholder]="question.placeholder" [formControlName]="question?.key">
+          <mat-option *ngFor="let opt of getOptions()" [value]="opt.value">{{opt.label}}</mat-option>
+        </mat-select>
+        <mat-icon matSuffix color="primary" *ngIf="!question.disabled">edit</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field [ngClass]="formFieldClass" *ngSwitchCase="'infoview'" appearance="outline" color="primary">
+        <mat-label>{{question.label}}</mat-label>
+        <input matInput type="text" [placeholder]="question.label" [formControlName]="question.key">
+        <button matSuffix mat-icon-button aria-label="Example icon-button with a heart icon"
+        *ngIf="question?.isLink" [routerLink]="routeLink" [disabled]="!value">
+          <mat-icon>remove_red_eye</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <ng-container *ngSwitchCase="'texteditor'">
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'textarray'">
+        <app-input-list [formControlName]="question?.key" [question]="question"></app-input-list>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'selectarray'">
+        <app-input-list [formControlName]="question?.key" [question]="question"></app-input-list>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'ytvideosarray'">
+        <app-input-list [formControlName]="question?.key" [question]="question"></app-input-list>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'recaptcha'">
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'chartregions'">
+        <h3>{{question?.label}}</h3>
+        <app-chart-regions [formControlName]="question?.key"></app-chart-regions>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'slideToggle'">
+        <mat-slide-toggle
+       color="primary"
+       [formControlName]="question?.key">{{question?.label}}</mat-slide-toggle>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'locationMap'">
+      </ng-container>
+    </ng-container>
+    <!-- <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div> -->
+  </ng-container>
+</div>

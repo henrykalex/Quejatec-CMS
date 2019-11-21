@@ -1,0 +1,40 @@
+<mat-sidenav-container>
+  <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+  [opened]="!mobileQuery.matches" [position]="mobileQuery.matches ? 'end':'start'"
+  [fixedInViewport]="mobileQuery.matches">
+    <div class="logoContainer flexBox center centerVertical">
+      <!-- <div class="imageContainer">
+        <img src="assets/logo.png" alt="Logo">
+      </div> -->
+      <h1>Quejatec</h1>
+    </div>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="nav.route" routerLinkActive="active" *ngFor="let nav of navRoutes">
+        <a *ngFor="let childRoute of nav.childRoutes" [routerLink]="childRoute" style="display: none"></a>
+        {{nav.label}}
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div class="buttonsContainer flexBox space centerVertical">
+        <div class="flexBox space centerVertical">
+          <span>Bienvenido!</span>
+        </div>
+
+        <button mat-icon-button (click)="snav.toggle()" *ngIf="mobileQuery.matches">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <div class="profileContainer flexBox space centerVertical" *ngIf="!mobileQuery.matches">
+          <span>Administrador</span>
+          <a mat-icon-button [routerLink]="['/admin','perfil']">
+            <mat-icon>assignment_ind</mat-icon>
+          </a>
+        </div>
+      </div>
+    </mat-toolbar>
+    <div class="placeHolder"></div>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

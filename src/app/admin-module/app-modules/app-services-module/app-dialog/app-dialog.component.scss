@@ -1,0 +1,15 @@
+.dialogContainer{
+  padding: 0.5em;
+  div[mat-dialog-content]{
+    padding-bottom: 1em;
+  }
+  div[mat-dialog-actions]{
+    button[mat-button]{
+      padding: 0.5em 2em;
+      border-radius: 0px;
+      &:last-child{
+        background-color: white;
+      }
+    }
+  }
+}

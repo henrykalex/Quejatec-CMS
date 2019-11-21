@@ -1,0 +1,96 @@
+<div class="tableHeaderContainer">
+  <div class="containerAddSearch flexBox space centerVertical">
+    <div class="" *ngIf="!hideAddButton">
+      <button mat-raised-button color="primary" (click)="addItem.emit(true)">{{addLabel}} +</button>
+    </div>
+    <mat-form-field class="search" *ngIf="!hideSearch">
+      <mat-label>Buscar</mat-label>
+      <input [formControl]="searchFormControl" matInput placeholder="Buscar">
+      <mat-icon matSuffix color="primary">search</mat-icon>
+    </mat-form-field>
+  </div>
+  <div class="flexBox end" *ngIf="filters">
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [formControl]="filterFormControl">
+      <mat-button-toggle [value]="filter.value" *ngFor="let filter of filters">{{filter.label}}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+<div class="tableContainer">
+
+  <mat-table #table [dataSource]="dataSource" class="table" matSort>
+    <ng-container matColumnDef="checkBox">
+      <mat-header-cell *matHeaderCellDef class="checkBox">
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()" color="primary">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="checkBox">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+          [checked]="selection.isSelected(row)" color="primary">
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container [matColumnDef]="column.key" *ngFor="let column of columns">
+      <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sort">{{column.label}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <ng-container *ngIf="!column.pipe && !column.map && !column.filter">
+          {{ row[column.key] }}
+        </ng-container>
+        <ng-container *ngIf="column.filter">
+          {{ column.filter(row[column.key]) }}
+        </ng-container>
+        <ng-container *ngIf="column.pipe == 'date'">
+          {{ row[column.key] | date}}
+        </ng-container>
+        <ng-container *ngIf="column.pipe == 'dateTime'">
+          {{ row[column.key] | date:'MMM dd,yyyy hh:mm'}}
+        </ng-container>
+        <ng-container *ngIf="column.pipe == 'time'">
+          {{ row[column.key] | date:'hh:mm'}}
+        </ng-container>
+        <ng-container *ngIf="column.pipe == 'currency'">
+          {{ row[column.key] | currency}}
+        </ng-container>
+        <ng-container *ngIf="column.pipe == 'points'">
+          {{ row[column.key] }}&nbsp;puntos
+        </ng-container>
+        <ng-container *ngIf="column.map">
+          {{ column.map[row[column.key]]}}
+        </ng-container>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef>Eliminar</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-button (click)="itemDelete.emit(row)">{{deleteText}}</button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="view">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-icon class="headerMarginLeft">remove_red_eye</mat-icon>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="itemClick.emit(row)" color="primary">
+          <mat-icon>remove_red_eye</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <div class="loadingShade" *ngIf="isLoadingResults">
+    <mat-progress-bar [mode]="'indeterminate'" color="primary"></mat-progress-bar>
+    <div class="rateLimitReached" *ngIf="isError">
+      <span>Error, prueba volviendo a cargar la página.</span>
+    </div>
+  </div>
+  <div class="noEntries" *ngIf="resultsLength == 0 && !isLoadingResults">
+    <p>No hay elementos</p>
+  </div>
+  <mat-paginator [length]="resultsLength" [pageSize]="5"></mat-paginator>
+</div>
+<!-- <button (click)="reloadData()">RELOAD</button> -->

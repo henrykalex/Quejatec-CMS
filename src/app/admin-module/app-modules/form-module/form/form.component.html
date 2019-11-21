@@ -1,0 +1,19 @@
+<div class="formContainer" [ngClass]="{twoCol: !oneCol}">
+  <form (ngSubmit)="submit()" [formGroup]="form">
+    <div *ngFor="let question of questions">
+      <app-form-question [formFieldClass]="formFieldClass" [question]="question" [form]="form" [state]="state"></app-form-question>
+    </div>
+    <div class="formButtons flexBox center column centerVertical">
+      <ng-container>
+        <button *ngIf="!baseData && !hideSubmit" mat-raised-button type="submit"
+          [disabled]="!form.valid || isSending" color="primary">
+          {{submitText?submitText:'ENVIAR'}}
+        </button>
+        <button *ngIf="baseData && !hideSubmit" mat-raised-button type="submit"
+          [disabled]="!form.valid || !dataChanged|| isSending" color="primary">
+          {{'ACTUALIZAR'}}
+        </button>
+      </ng-container>
+    </div>
+  </form>
+</div>

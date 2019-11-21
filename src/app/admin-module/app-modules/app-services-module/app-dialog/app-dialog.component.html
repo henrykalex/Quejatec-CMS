@@ -1,0 +1,29 @@
+<ng-container *ngIf="dialogType=='loading'">
+  <div class="flexBox column center centerVertical">
+    <mat-spinner></mat-spinner>
+    <h1>CARGANDO</h1>
+  </div>
+</ng-container>
+<ng-container *ngIf="dialogType=='error'">
+  <div class="dialogContainer flexBox column center centerVertical">
+    <h1 mat-dialog-title>Error</h1>
+    <div mat-dialog-content>
+      <p>{{message}}</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close cdkFocusInitial>{{okButton}}</button>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="dialogType=='message'">
+  <div class="dialogContainer flexBox column center centerVertical">
+    <h1 mat-dialog-title>{{messageTitle}}</h1>
+    <div mat-dialog-content>
+      <p>{{message}}</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="cancelAction()" *ngIf="cancelButton">{{cancelButton}}</button>
+      <button mat-button (click)="action()" cdkFocusInitial>{{okButton}}</button>
+    </div>
+  </div>
+</ng-container>

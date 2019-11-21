@@ -1,0 +1,34 @@
+<div class="elementView flexBox space">
+  <div class="dataFormWrapper">
+    <div class="dataFormLabel flexBox centerVertical">
+      <h1>Información</h1>&nbsp;&nbsp;&nbsp;
+      <mat-icon color="accent">help_outline</mat-icon>
+    </div>
+    <div class="formViewContainer appBox">
+      <app-form [questions]="elementQuestions" [oneCol]="true"
+      [baseData]="elementData" (onSubmit)="submitForm($event)"></app-form>
+    </div>
+    <ng-container *ngIf="elementData">
+      <div class="elementsTable">
+        <h2>Espacios / Eventos</h2>
+        <app-table
+        [columns]="spacesColumns" [source]="spacesData" [viewButton]="true"
+        addLabel="AGREGAR NUEVO ESPACIO / EVENTO" (onAddItem)="addNewSpace()"
+        (onItemClick)="viewSpace($event)"></app-table>
+      </div>
+    </ng-container>
+  </div>
+  <div class="elementControls flexBox column" *ngIf="elementData">
+    <button mat-raised-button color="primary" (click)="setStatus('inactive')" *ngIf="elementData?.status=='active'">BLOQUEAR</button>
+    <button mat-raised-button color="primary" (click)="setStatus('active')" *ngIf="elementData?.status=='inactive'">ACTIVAR</button>
+    <button mat-raised-button color="primary" (click)="deleteElement()" *ngIf="elementData?.status=='inactive'">ELIMINAR</button>
+    <div class="statusBox">
+      <div class="info flexBox">
+        <span>Estatus: </span><span>{{statusMap[elementData?.status]}}</span>
+      </div>
+      <div class="info flexBox">
+        <span>Registro: </span><span>{{elementData?.registerDate | date}}</span>
+      </div>
+    </div>
+  </div>
+</div>

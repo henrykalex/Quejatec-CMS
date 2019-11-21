@@ -1,0 +1,14 @@
+<div [formGroup]="parts" class="dateTimeSelectContainer flexBox centerVertical">
+  <div class="flexBox centerVertical" (click)="picker.open()">
+    <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Seleccionar fecha">
+    <mat-datepicker-toggle matSuffix [for]="picker" color="primary"></mat-datepicker-toggle>
+    <mat-datepicker #picker disabled="false"></mat-datepicker>
+  </div>
+  <mat-select formControlName="hours" placeholder="HH">
+    <mat-option *ngFor="let opt of hoursOptions" [value]="opt.value">{{opt.label}}</mat-option>
+  </mat-select>
+  <span class="white">&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <mat-select formControlName="minutes" (click)="handleClick($event)" placeholder="MM">
+    <mat-option *ngFor="let opt of minutesOptions" [value]="opt.value">{{opt.label}}</mat-option>
+  </mat-select>
+</div>

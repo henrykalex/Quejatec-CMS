@@ -1,0 +1,17 @@
+@media screen and (max-width: 480px){
+  .tableHeaderContainer{
+    .containerAddSearch{
+      flex-wrap: wrap;
+      mat-form-field.search{
+        width: 100%
+      }
+    }
+    mat-button-toggle-group{
+      flex-wrap: wrap;
+      justify-content: center;
+      mat-button-toggle.mat-button-toggle{
+        flex-basis: 100%;
+      }
+    }
+  }
+}

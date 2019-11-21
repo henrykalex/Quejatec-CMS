@@ -1,0 +1,9 @@
+<div [formGroup]="parts" class="timeSelectContainer flexBox centerVertical" (click)="propagateTouched()">
+  <mat-select formControlName="hours" placeholder="HH">
+    <mat-option *ngFor="let opt of hoursOptions" [value]="opt.value">{{opt.label}}</mat-option>
+  </mat-select>
+  <span>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <mat-select formControlName="minutes" placeholder="MM" (click)="handleClick($event)">
+    <mat-option *ngFor="let opt of minutesOptions" [value]="opt.value">{{opt.label}}</mat-option>
+  </mat-select>
+</div>

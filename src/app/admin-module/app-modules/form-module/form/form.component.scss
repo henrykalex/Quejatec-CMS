@@ -1,0 +1,15 @@
+.formContainer{
+  &.towCol{
+    app-form-question{
+      width: 50%;
+    }
+    .formButtons{
+      align-items: flex-end;
+    }
+  }
+  width: 100%;
+  app-form-question{
+    width: 100%;
+  }
+
+}

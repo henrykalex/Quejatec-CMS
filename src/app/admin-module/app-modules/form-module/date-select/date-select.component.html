@@ -1,0 +1,7 @@
+<div [formGroup]="parts" class="dateSelectContainer flexBox centerVertical">
+  <div class="flexBox centerVertical" (click)="picker.open()">
+    <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Seleccionar fecha">
+    <mat-datepicker-toggle matSuffix [for]="picker" color="primary"></mat-datepicker-toggle>
+    <mat-datepicker #picker disabled="false"></mat-datepicker>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+.tableHeaderContainer{
+  mat-button-toggle-group{
+    margin-bottom: 1em;
+    mat-button-toggle{
+      button.mat-button-toggle-button{
+        .mat-button-toggle-label-content{
+          line-height: 2.5em;
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+}
+.tableContainer{
+  background-color: rgba(0,0,0,0.05);
+  .loadingShade{
+    // padding: 1em;
+    position: relative;
+    width: 100%;
+    mat-progress-bar{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  }
+  .noEntries{
+    display: flex;
+    justify-content: center;
+    padding:  1em 0;
+    background-color: white;
+  }
+  .table{
+    .checkBox{
+      flex: 0.1;
+    }
+    .headerMarginLeft{
+      margin-left: 0.3em;
+    }
+  }
+}
+@import "table-mobile.component";

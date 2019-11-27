@@ -14,7 +14,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login.component';
 
-import { AppServicesModule } from './admin-module/app-modules/app-services-module';
+import { FormModule } from './app-modules/form-module';
+import { TableModule } from './app-modules/table-module';
+import { AppServicesModule } from './app-modules/app-services-module';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { AppServicesModule } from './admin-module/app-modules/app-services-modul
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
+    FormModule,
+    TableModule,
     AppServicesModule.forRoot(),
   ],
   providers: [],

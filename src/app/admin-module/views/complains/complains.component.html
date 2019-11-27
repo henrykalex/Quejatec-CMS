@@ -1,1 +1,6 @@
-<p>complains works!</p>
+<div class="tableView">
+  <h1>Quejas</h1>
+  <app-table [columns]="columnsDefinition" [sourceFunction]="tableFunction"
+  [viewButton]="true" [filters]="filtersDefinition"
+  [hideAddButton]="true" (itemClick)="viewItem($event)"></app-table>
+</div>

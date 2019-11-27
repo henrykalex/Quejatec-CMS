@@ -6,12 +6,12 @@ import {
   RequestTableOptions,
   ResponseTableItems,
   getTableHttpParams
-} from '../app-modules/table-module';
+} from '../../app-modules/table-module';
 
 import {
   HttpErrorHandler,
   HandleError
-} from '../app-modules/app-services-module';
+} from '../../app-modules/app-services-module';
 
 import { AppConfig } from '../../app.config';
 const apiUrl = AppConfig.apiURL;
@@ -28,12 +28,23 @@ export class SpaceGroupsService {
     this.handleError = this.httpErrorHandler.createHandleError('SpaceGroupsService');
   }
 
+  getAllSpaceGroups = () => {
+    console.log('getAllSpaceGroups');
+    return this.httpClient.get(`${apiUrl}admin/place-event-group/all`).pipe(
+      map((response: any) => {
+        console.log('getAllSpaceGroups response', response);
+        return response.items;
+      }),
+      catchError(this.handleError('getAllSpaceGroups', null))
+    );
+  }
+
   getSpaceGroups = (options: RequestTableOptions) => {
     console.log('getSpaceGroups');
-    return this.httpClient.get(`${apiUrl}admin/spaceGroups`, { params: getTableHttpParams(options) }).pipe(
+    return this.httpClient.get(`${apiUrl}admin/place-event-group`, { params: getTableHttpParams(options) }).pipe(
       map((response: any) => {
         console.log('getSpaceGroups response', response);
-        return { items: response.items.docs, totalCount: response.items.totalDocs } as ResponseTableItems;
+        return { items: response.docs, totalCount: response.totalDocs } as ResponseTableItems;
       }),
       catchError(this.handleError('getSpaceGroups', null))
     );
@@ -41,7 +52,7 @@ export class SpaceGroupsService {
 
   createSpaceGroup = (spaceGroupData: any) => {
     console.log('createSpaceGroup', spaceGroupData);
-    return this.httpClient.post(`${apiUrl}admin/spaceGroup`, spaceGroupData).pipe(
+    return this.httpClient.post(`${apiUrl}admin/place-event-group`, spaceGroupData).pipe(
       map((response: any) => {
         console.log('createSpaceGroup response', response);
         return response.item;
@@ -52,7 +63,7 @@ export class SpaceGroupsService {
 
   getSpaceGroup = (spaceGroupId: string) => {
     console.log('getSpaceGroup', spaceGroupId);
-    return this.httpClient.get(`${apiUrl}admin/spaceGroup/${spaceGroupId}`).pipe(
+    return this.httpClient.get(`${apiUrl}admin/place-event-group/${spaceGroupId}`).pipe(
       map((response: any) => {
         console.log('getSpaceGroup response', response);
         return response.item;
@@ -63,7 +74,7 @@ export class SpaceGroupsService {
 
   updateSpaceGroup = (spaceGroupId: string, spaceGroupData: any) => {
     console.log('updateSpaceGroup', spaceGroupData);
-    return this.httpClient.patch(`${apiUrl}admin/spaceGroup/${spaceGroupId}`, spaceGroupData).pipe(
+    return this.httpClient.patch(`${apiUrl}admin/place-event-group/${spaceGroupId}`, spaceGroupData).pipe(
       map((response: any) => {
         console.log('updateSpaceGroup response', response);
         return response.item;
@@ -74,7 +85,7 @@ export class SpaceGroupsService {
 
   deleteSpaceGroup = (spaceGroupId: string) => {
     console.log('deleteSpaceGroup', spaceGroupId);
-    return this.httpClient.delete(`${apiUrl}admin/spaceGroup/${spaceGroupId}`).pipe(
+    return this.httpClient.delete(`${apiUrl}admin/place-event-group/${spaceGroupId}`).pipe(
       map((response: any) => {
         console.log('deleteSpaceGroup response', response);
         return response.success;

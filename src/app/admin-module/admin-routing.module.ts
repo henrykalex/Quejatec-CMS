@@ -10,7 +10,9 @@ import { SpaceGroupsComponent } from './views/space-groups/space-groups.componen
 import { SpaceGroupViewComponent } from './views/space-group-view/space-group-view.component';
 import { SpaceViewComponent } from './views/space-view/space-view.component';
 import { AdminsComponent } from './views/admins/admins.component';
+import { AdminViewComponent } from './views/admin-view/admin-view.component';
 import { UsersComponent } from './views/users/users.component';
+import { UserViewComponent } from './views/user-view/user-view.component';
 
 
 const routes: Routes = [
@@ -21,6 +23,7 @@ const routes: Routes = [
       {
         path: '',
         children: [
+          { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: 'home', component: HomeComponent },
           { path: 'quejas', component: ComplainsComponent },
           { path: 'queja', component: ComplainViewComponent },
@@ -31,11 +34,12 @@ const routes: Routes = [
           { path: 'space-group/:id', component: SpaceGroupViewComponent },
           { path: 'space-group/:id/space', component: SpaceViewComponent },
           { path: 'space-group/:id/space/:subId', component: SpaceViewComponent },
-          { path: 'admins', component: AdminsComponent },
-          { path: 'admin', component: AdminComponent },
-          { path: 'admin/:id', component: AdminComponent },
+          { path: 'administradores', component: AdminsComponent },
+          { path: 'administrador', component: AdminViewComponent },
+          { path: 'administrador/:id', component: AdminViewComponent },
           { path: 'users', component: UsersComponent },
-          { path: 'user/:id', component: UsersComponent },
+          { path: 'user/:id', component: UserViewComponent },
+          { path: '**', redirectTo: 'home' }
         ]
       }
     ]

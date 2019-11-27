@@ -1,0 +1,32 @@
+.tableView,.elementView{
+  padding: 1em 5% 5em;
+  h1{
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+}
+.elementView{
+  .dataFormWrapper{
+    width: 65%;
+    .dataFormLabel{
+      margin-bottom: 1em;
+      h1{
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+    }
+  }
+  .elementControls{
+    .statusBox{
+      margin: 1em 0;
+      min-width: 15em;
+      .info{
+        span{
+          &:first-child{
+            width: 7em;
+          }
+        }
+      }
+    }
+  }
+}

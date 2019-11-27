@@ -70,7 +70,10 @@ export class FormComponent implements OnInit, AfterViewInit, OnChanges {
     const group: any = {};
 
     questions.forEach(question => {
-      const tempFC = new FormControl({ value: question.controlType === 'slideToggle' ? false : '', disabled: question.disabled });
+      const tempFC = new FormControl({
+        value: question.controlType === 'slideToggle' ? false : '',
+        disabled: question.controlType === 'infoview' ? true : question.disabled
+      });
       let tempValidator = [];
       if (question.required) { tempValidator.push(Validators.required); }
       if (question instanceof InputQuestion) {

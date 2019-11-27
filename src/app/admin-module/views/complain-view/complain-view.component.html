@@ -1,1 +1,29 @@
-<p>complain-view works!</p>
+<div class="elementView flexBox space">
+    <div class="dataFormWrapper">
+      <div class="dataFormLabel flexBox centerVertical">
+        <h1>Información</h1>&nbsp;&nbsp;&nbsp;
+        <mat-icon color="accent">help_outline</mat-icon>
+      </div>
+      <div class="formViewContainer appBox">
+        <app-form [questions]="elementQuestions" [oneCol]="true"
+        [baseData]="elementData" (submitForm)="submitForm($event)"></app-form>
+      </div>
+    </div>
+    <div class="elementControls flexBox column" *ngIf="elementData">
+        <button mat-raised-button color="primary" (click)="setStatus('rejected')" *ngIf="elementData?.status=='open'">RECHAZAR</button>
+        <button mat-raised-button color="primary" (click)="setStatus('closed')" *ngIf="elementData?.status=='in-process' ">CERRAR</button>
+        <button mat-raised-button color="primary" (click)="setStatus('in-process')" *ngIf="elementData?.status=='viewed'">EN PROCESO</button>
+        <button mat-raised-button color="primary" (click)="setStatus('viewed')" *ngIf="elementData?.status=='assigned'">REVISADA</button>
+        <!-- <button mat-raised-button color="primary" (click)="setStatus('assigned')" *ngIf="elementData?.status=='open'">ASSIGNAR</button> -->
+        <button mat-raised-button color="primary" (click)="deleteElement()" *ngIf="elementData?.status=='inactive'">ELIMINAR</button>
+      <div class="statusBox">
+        <div class="info flexBox">
+          <span>Estatus: </span><span>{{statusMap[elementData?.status]}}</span>
+        </div>
+        <div class="info flexBox">
+          <span>Registro: </span><span>{{elementData?.registerDate | date}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -31,7 +31,7 @@
         <mat-icon matSuffix color="primary" *ngIf="!question.disabled">edit</mat-icon>
       </mat-form-field>
 
-      <mat-form-field [ngClass]="formFieldClass" *ngSwitchCase="'infoview'" appearance="outline" color="primary">
+      <mat-form-field class="noDisabled" [ngClass]="formFieldClass" *ngSwitchCase="'infoview'" appearance="outline" color="primary">
         <mat-label>{{question.label}}</mat-label>
         <input matInput type="text" [placeholder]="question.label" [formControlName]="question.key">
         <button matSuffix mat-icon-button aria-label="Example icon-button with a heart icon"

@@ -6,21 +6,22 @@
     </div>
     <div class="formViewContainer appBox">
       <app-form [questions]="elementQuestions" [oneCol]="true"
-      [baseData]="elementData" (onSubmit)="submitForm($event)"></app-form>
+      [baseData]="elementData" (submitForm)="submitForm($event)"></app-form>
     </div>
     <ng-container *ngIf="elementData">
       <div class="elementsTable">
         <h2>Espacios / Eventos</h2>
         <app-table
-        [columns]="spacesColumns" [source]="spacesData" [viewButton]="true"
-        addLabel="AGREGAR NUEVO ESPACIO / EVENTO" (onAddItem)="addNewSpace()"
-        (onItemClick)="viewSpace($event)"></app-table>
+        [columns]="spacesColumns" [sourceFunction]="spacesDataFn" [viewButton]="true"
+        addLabel="AGREGAR NUEVO ESPACIO / EVENTO" (addItem)="addNewSpace()"
+        (itemClick)="viewSpace($event)"></app-table>
       </div>
     </ng-container>
   </div>
   <div class="elementControls flexBox column" *ngIf="elementData">
-    <button mat-raised-button color="primary" (click)="setStatus('inactive')" *ngIf="elementData?.status=='active'">BLOQUEAR</button>
-    <button mat-raised-button color="primary" (click)="setStatus('active')" *ngIf="elementData?.status=='inactive'">ACTIVAR</button>
+    <button mat-raised-button color="primary" (click)="setStatus('inactive')" *ngIf="elementData?.status=='draft' || elementData?.status=='active'">BLOQUEAR</button>
+    <button mat-raised-button color="primary" (click)="setStatus('draft')" *ngIf="elementData?.status=='active' || elementData?.status=='inactive'">BORRADOR</button>
+    <button mat-raised-button color="primary" (click)="setStatus('active')" *ngIf="elementData?.status=='inactive' || elementData?.status=='draft'">ACTIVAR</button>
     <button mat-raised-button color="primary" (click)="deleteElement()" *ngIf="elementData?.status=='inactive'">ELIMINAR</button>
     <div class="statusBox">
       <div class="info flexBox">

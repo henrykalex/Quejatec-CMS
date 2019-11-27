@@ -1,6 +1,6 @@
 import {
   InputQuestion
-} from '../../app-modules/form-module';
+} from '../../../app-modules/form-module';
 import { Validators } from '@angular/forms';
 
 export const PARTIAL_SPACE_GROUP_QUESTIONS = [

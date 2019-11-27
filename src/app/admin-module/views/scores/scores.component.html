@@ -1,1 +1,25 @@
-<p>scores works!</p>
+<div class="tableView">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Net Promoter Score
+        <mat-form-field>
+          <mat-label>Grupo </mat-label>
+          <mat-select [formControl]="groupControl">
+            <mat-option *ngFor="let group of groups" [value]="group._id">
+              {{group.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="chartContainer" #container>
+        <ngx-charts-heat-map [view]="[container.offsetWidth, container.offsetHeight]" [results]="scoresData"
+          [min]="-100" [max]="100" [animations]="true" [legend]="true" [xAxis]="true" [yAxis]="true"
+          [showXAxisLabel]="true" [showYAxisLabel]="true" xAxisLabel="Espacio" yAxisLabel="Fecha">
+        </ngx-charts-heat-map>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

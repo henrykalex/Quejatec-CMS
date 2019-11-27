@@ -35,14 +35,14 @@ export function createArrayLengthValidator() {
   ]
 })
 export class InputListComponent implements OnInit, OnChanges, ControlValueAccessor {
-  questionPriv: QuestionBase;
-  @Input() set question(value: QuestionBase) {
+  questionPriv: any;
+  @Input() set question(value: any) {
     this.questionPriv = value;
     if (value.controlType === 'selectarray') {
       this.questionOptions = Object.assign([], (value as SelectarrayQuestion).options);
     }
   }
-  get question(): QuestionBase {
+  get question(): any {
     return this.questionPriv;
   }
 

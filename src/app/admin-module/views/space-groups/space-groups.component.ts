@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { ColumnDef, FilterDef, TableView } from '../../app-modules/table-module';
+import { ColumnDef, FilterDef, TableView } from '../../../app-modules/table-module';
 
 import { SpaceGroupsService } from '../../services/space-groups.service';
 
 const SPACE_GROUPS_COLUMNS: ColumnDef[] = [
-  { label: 'Title', key: 'title', sort: true }
+  { label: 'Nombre', key: 'name', sort: true }
 ];
 const SPACE_GROUPS_FILTERS: FilterDef[] = [
   { label: 'ACTIVE', value: 'active', field: 'status' },

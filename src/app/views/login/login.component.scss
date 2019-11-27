@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+$primary: mat-palette($mat-indigo);
+
+.loginContainer{
+  background-color: mat-color($primary);
+  height: 100vh;
+  mat-card{
+    .cardHeader{
+      .imageContainer{
+        height: 6em;
+        margin-bottom: 1em;
+      }
+    }
+  }
+}

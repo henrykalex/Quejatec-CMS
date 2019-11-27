@@ -1,1 +1,21 @@
-<p>login works!</p>
+<div class="loginContainer flexBox center centerVertical">
+  <mat-card>
+    <div class="cardHeader flexBox column centerVertical">
+      <!-- <div class="imageContainer">
+        <img src="assets/quejatec-logo.png" alt="logo">
+      </div> -->
+      <h2 >Quejatec</h2>
+    </div>
+    <mat-card-content>
+      <div class="flexBox column centerVertical">
+        <app-form
+        [questions]="loginQuestions"
+        [oneCol]="true"
+        submitText="ENTRAR"
+        (submitForm)="login($event)">
+        </app-form>
+        <!-- <button mat-button [routerLink]="isAdmin?['/recuperar-contraseña/admin']:['/recuperar-contraseña']">Recuperar contraseña</button> -->
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

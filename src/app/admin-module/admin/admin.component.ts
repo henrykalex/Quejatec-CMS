@@ -12,10 +12,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   navRoutes = [
     { label: 'Inicio', route: ['/admin', 'home'] },
     { label: 'Quejas', route: ['/admin', 'quejas'], childRoutes: [['/admin', 'queja']] },
-    { label: 'NetScore', route: ['/admin', 'scores']},
+    { label: 'NetScore', route: ['/admin', 'scores'] },
     { label: 'Grupos', route: ['/admin', 'space-groups'], childRoutes: [['/admin', 'space-group']] },
-    { label: 'Administradores', route: ['/admin','admins'], childRoutes: [['/admin', 'admin']] },
-    { label: 'Usuarios', route: ['/admin','users'], childRoutes: [['/admin', 'user']] },
+    { label: 'Administradores', route: ['/admin', 'administradores'], childRoutes: [['/admin', 'admin']] },
+    { label: 'Usuarios', route: ['/admin', 'users'], childRoutes: [['/admin', 'user']] },
+    { label: 'Salir', route: ['/login'] },
   ];
 
   private _mobileQueryListener: () => void;

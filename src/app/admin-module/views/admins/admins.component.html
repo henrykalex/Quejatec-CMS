@@ -1,1 +1,6 @@
-<p>admins works!</p>
+<div class="tableView">
+  <h1>Administradores</h1>
+  <app-table [columns]="columnsDefinition" [sourceFunction]="tableFunction"
+  [viewButton]="true" [filters]="filtersDefinition"
+  (addItem)="addNewItem()" (itemClick)="viewItem($event)"></app-table>
+</div>

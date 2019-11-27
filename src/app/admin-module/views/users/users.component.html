@@ -1,1 +1,6 @@
-<p>users works!</p>
+<div class="tableView">
+  <h1>Usuarios</h1>
+  <app-table [columns]="columnsDefinition" [sourceFunction]="tableFunction"
+  [viewButton]="true" [filters]="filtersDefinition"
+  [hideAddButton]="true" (itemClick)="viewItem($event)"></app-table>
+</div>

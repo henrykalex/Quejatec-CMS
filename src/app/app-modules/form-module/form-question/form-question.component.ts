@@ -1,4 +1,4 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation  } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { QuestionBase } from '../classes/question-base';
 import { InfoViewQuestion } from '../classes/question-infoview';
@@ -19,12 +19,11 @@ import { ChartRegionsQuestion } from '../classes/question-chart-regions';
 @Component({
   selector: 'app-form-question',
   templateUrl: './form-question.component.html',
-  styleUrls: ['./form-question.component.scss']
+  styleUrls: ['./form-question.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class FormQuestionComponent implements OnInit {
-  @Input() question: QuestionBase | InputQuestion | SelectQuestion | TextareaQuestion | TexteditorQuestion | TextarrayQuestion |
-  AutocompletearrayQuestion | ImagesUploaderQuestion | SlideToggleQuestion | SelectarrayQuestion | RecaptchaQuestion |
-  YtvideosarrayQuestion | ChartRegionsQuestion | InfoViewQuestion | LocationMapQuestion;
+  @Input() question: any;
 
   @Input() form: FormGroup;
   @Input() state: 'view'|'edit';

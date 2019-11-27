@@ -103,6 +103,10 @@ export class ElementSubView {
     });
   }
 
+  setStatus(status: string) {
+    this.updateElement({ status });
+  }
+
   deleteElement() {
     this.elementDeleteServiceFn(this.parentElementId, this.elementId)
       .subscribe(success => {

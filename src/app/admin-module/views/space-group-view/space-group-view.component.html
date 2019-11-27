@@ -11,7 +11,7 @@
     <ng-container *ngIf="elementData">
       <div class="elementsTable">
         <h2>Espacios / Eventos</h2>
-        <app-table
+        <app-table [filters]="spaceGroupsFilters"
         [columns]="spacesColumns" [sourceFunction]="spacesDataFn" [viewButton]="true"
         addLabel="AGREGAR NUEVO ESPACIO / EVENTO" (addItem)="addNewSpace()"
         (itemClick)="viewSpace($event)"></app-table>

@@ -1,0 +1,6 @@
+<div class="tableView">
+  <h1>Notificaciones</h1>
+  <app-table [columns]="columnsDefinition" [sourceFunction]="tableFunction"
+  [viewButton]="false" [deleteButton]="true" [hideAddButton]="true"
+  (itemDelete)="deleteItem($event)"></app-table>
+</div>

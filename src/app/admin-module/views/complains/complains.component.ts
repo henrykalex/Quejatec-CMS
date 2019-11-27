@@ -9,7 +9,7 @@ const COMPLAINS_COLUMNS: ColumnDef[] = [
   { label: 'Fecha', key: 'registerDate', sort: true }
 ];
 const COMPLAINS_FILTERS: FilterDef[] = [
-  { label: 'ACTIVE', value: 'open', field: 'status' },
+  { label: 'SIN ASIGNAR', value: 'open', field: 'status' },
   { label: 'ASIGNADA', value: 'assigned', field: 'status' },
   { label: 'REVISADA', value: 'viewed', field: 'status' },
   { label: 'EN PROCESO', value: 'in-process', field: 'status' },

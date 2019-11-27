@@ -14,7 +14,7 @@ import { SpaceService } from '../../services/space.service';
   styleUrls: ['./space-view.component.scss']
 })
 export class SpaceViewComponent extends ElementSubView implements OnInit {
-  statusMap = { active: 'Activo', inactive: 'Desactivado' };
+  statusMap = { active: 'Activo', inactive: 'Inactivo' };
 
   constructor(
     protected appService: AppService,

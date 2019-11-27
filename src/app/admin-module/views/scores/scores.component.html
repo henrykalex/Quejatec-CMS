@@ -16,7 +16,7 @@
     <mat-card-content>
       <div class="chartContainer" #container>
         <ngx-charts-heat-map [view]="[container.offsetWidth, container.offsetHeight]" [results]="scoresData"
-          [min]="-100" [max]="100" [animations]="true" [legend]="true" [xAxis]="true" [yAxis]="true"
+          [min]="0" [max]="10" [animations]="true" [legend]="true" [xAxis]="true" [yAxis]="true"
           [showXAxisLabel]="true" [showYAxisLabel]="true" xAxisLabel="Espacio" yAxisLabel="Fecha">
         </ngx-charts-heat-map>
       </div>

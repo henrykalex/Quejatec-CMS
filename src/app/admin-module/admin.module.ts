@@ -13,6 +13,9 @@ import { AdminViewComponent } from './views/admin-view/admin-view.component';
 import { SpaceGroupsComponent } from './views/space-groups/space-groups.component';
 import { SpaceGroupViewComponent } from './views/space-group-view/space-group-view.component';
 import { SpaceViewComponent } from './views/space-view/space-view.component';
+import { NotificationsComponent } from './views/notifications/notifications.component';
+import { QRGeneratorComponent } from './views/qrgenerator/qrgenerator.component';
+
 import { AdminComponent } from './admin/admin.component';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -20,6 +23,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import {
   MatSidenavModule, MatListModule, MatIconModule, MatToolbarModule,
   MatButtonModule, MatCardModule, MatFormFieldModule, MatSelectModule,
+  MatInputModule,
 } from '@angular/material';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -34,7 +38,7 @@ import { AppServicesModule } from '../app-modules/app-services-module';
     ComplainViewComponent, ComplainsComponent, ScoresComponent,
     UsersComponent, UserViewComponent, AdminsComponent,
     AdminViewComponent, SpaceGroupsComponent, SpaceGroupViewComponent,
-    SpaceViewComponent, AdminComponent
+    SpaceViewComponent, AdminComponent, NotificationsComponent, QRGeneratorComponent
   ],
   imports: [
     CommonModule,
@@ -42,6 +46,7 @@ import { AppServicesModule } from '../app-modules/app-services-module';
     AdminRoutingModule,
     MatSidenavModule, MatListModule, MatIconModule, MatToolbarModule,
     MatButtonModule, MatCardModule, MatFormFieldModule, MatSelectModule,
+    MatInputModule,
     FormModule,
     TableModule,
     AppServicesModule,

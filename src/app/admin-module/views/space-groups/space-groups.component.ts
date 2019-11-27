@@ -9,8 +9,8 @@ const SPACE_GROUPS_COLUMNS: ColumnDef[] = [
   { label: 'Nombre', key: 'name', sort: true }
 ];
 const SPACE_GROUPS_FILTERS: FilterDef[] = [
-  { label: 'ACTIVE', value: 'active', field: 'status' },
-  { label: 'INACTIVE', value: 'inactive', field: 'status' }
+  { label: 'ACTIVO', value: 'active', field: 'status' },
+  { label: 'INACTIVO', value: 'inactive', field: 'status' }
 ];
 @Component({
   selector: 'app-space-groups',

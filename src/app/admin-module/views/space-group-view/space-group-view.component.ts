@@ -3,7 +3,7 @@ import { AppService } from '../../../app-modules/app-services-module';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ElementView } from '../../../app-modules/form-module';
-import { ColumnDef } from '../../../app-modules/table-module';
+import { FilterDef, ColumnDef } from '../../../app-modules/table-module';
 
 import { SPACE_GROUP_QUESTIONS, PARTIAL_SPACE_GROUP_QUESTIONS } from './space-group-questions';
 import { SpaceGroupsService } from '../../services/space-groups.service';
@@ -15,8 +15,12 @@ import { SpaceService } from '../../services/space.service';
   styleUrls: ['./space-group-view.component.scss']
 })
 export class SpaceGroupViewComponent extends ElementView implements OnInit {
-  statusMap = { active: 'Activo', draft: 'Borrador', inactive: 'Desactivado' };
+  statusMap = { active: 'Activo', inactive: 'Desactivado' };
 
+  spaceGroupsFilters: FilterDef[] = [
+    { label: 'ACTIVO', value: 'active', field: 'status' },
+    { label: 'INACTIVO', value: 'inactive', field: 'status' }
+  ];
   spacesColumns: ColumnDef[] = [
     { label: 'Nombre', key: 'name', sort: false },
   ];

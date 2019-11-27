@@ -13,6 +13,8 @@ import { AdminsComponent } from './views/admins/admins.component';
 import { AdminViewComponent } from './views/admin-view/admin-view.component';
 import { UsersComponent } from './views/users/users.component';
 import { UserViewComponent } from './views/user-view/user-view.component';
+import { NotificationsComponent } from './views/notifications/notifications.component';
+import { QRGeneratorComponent } from './views/qrgenerator/qrgenerator.component';
 
 
 const routes: Routes = [
@@ -29,16 +31,19 @@ const routes: Routes = [
           { path: 'queja', component: ComplainViewComponent },
           { path: 'queja/:id', component: ComplainViewComponent },
           { path: 'scores', component: ScoresComponent },
+          { path: 'notificaciones', component: NotificationsComponent },
           { path: 'space-groups', component: SpaceGroupsComponent },
           { path: 'space-group', component: SpaceGroupViewComponent },
           { path: 'space-group/:id', component: SpaceGroupViewComponent },
           { path: 'space-group/:id/space', component: SpaceViewComponent },
           { path: 'space-group/:id/space/:subId', component: SpaceViewComponent },
+          { path: 'space/:subId', component: SpaceViewComponent },
           { path: 'administradores', component: AdminsComponent },
           { path: 'administrador', component: AdminViewComponent },
           { path: 'administrador/:id', component: AdminViewComponent },
           { path: 'users', component: UsersComponent },
           { path: 'user/:id', component: UserViewComponent },
+          { path: 'generador-qr', component: QRGeneratorComponent },
           { path: '**', redirectTo: 'home' }
         ]
       }

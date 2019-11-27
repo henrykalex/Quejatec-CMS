@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Generador de QR</mat-card-title>
+    <mat-card-subtitle>
+      Genera una imágen qr agregando el link con el formato: <br>
+      <code>http://my-app-dpmain.com/&lt;id-del-espacio-evento></code>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Link" [formControl]="qrControl">
+      </mat-form-field>
+      <button mat-button [disabled]="!qrControl.valid" (click)="loadQRCode()">Cargar</button>
+    </div>
+    <div>
+      <img [src]="qrImage" alt="QR-CODE">
+    </div>
+  </mat-card-content>
+</mat-card>
